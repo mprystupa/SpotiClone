@@ -12,7 +12,7 @@ const PlayerLayout = ({ children }) => {
       </Box>
 
       <Box marginLeft={sidebarWidth} marginBottom={playBarHeight}>
-        {children}
+        <Box height={`calc(100vh - ${playBarHeight})`}>{children}</Box>
       </Box>
       <Box position="absolute" left="0" bottom="0" height={playBarHeight}>
         playbar
