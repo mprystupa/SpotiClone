@@ -17,6 +17,7 @@ import {
   MdSearch,
 } from 'react-icons/md';
 import { IconType } from 'react-icons';
+import { usePlaylist } from '../lib/hooks';
 
 interface MenuItem {
   name: string;
@@ -55,9 +56,9 @@ const musicMenu: MenuItem[] = [
   },
 ];
 
-const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`);
-
 const Sidebar = () => {
+  const { playlists } = usePlaylist();
+
   return (
     <Box width="100%" height="calc(100vh - 100px)" bg="black" color="gray">
       <Box paddingY="20px" height="100%">
@@ -113,10 +114,10 @@ const Sidebar = () => {
           {' '}
           <List spacing={1.5}>
             {playlists.map((playlist) => (
-              <ListItem paddingX="20px" fontSize="16px" key={playlist}>
+              <ListItem paddingX="20px" fontSize="16px" key={playlist.id}>
                 <LinkBox>
                   <Link href="/" passHref>
-                    <LinkOverlay>{playlist}</LinkOverlay>
+                    <LinkOverlay>{playlist.name}</LinkOverlay>
                   </Link>
                 </LinkBox>
               </ListItem>

@@ -1,4 +1,3 @@
-import { User } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
@@ -37,5 +36,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     );
 
     res.json(user);
+  } else {
+    res.status(401);
+    res.json({ error: 'Email or Password is wrong' });
   }
 };
