@@ -8,14 +8,15 @@ const GradientLayout = ({
   title,
   description,
   roundImage,
+  children,
 }) => {
   return (
     <Box
       height="100%"
       overflowY="auto"
-      bgGradient={`linear(${color}.500 0%, ${color}.600 15%, ${color}.700 40%, rgba(0,0,0,0.95) 75%)`}
+      bgGradient={`linear(${color}.700 0%, ${color}.800 15%, ${color}.900 40%, rgba(0,0,0,0.95) 75%)`}
     >
-      <Flex bg={`${color}.600`} padding="40px" align="end">
+      <Flex bg={`${color}.800`} padding="40px" align="end">
         <Box padding="20px">
           <Image
             boxSize="160px"
@@ -28,10 +29,13 @@ const GradientLayout = ({
           <Text fontSize="x-small" fontWeight="bold" casing="uppercase">
             {subtitle}
           </Text>
-          <Text fontSize="6xl">{title}</Text>
+          <Text fontSize="6xl" fontWeight="bold">
+            {title}
+          </Text>
           <Text fontSize="x-small">{description}</Text>
         </Box>
       </Flex>
+      <Box paddingY="40px">{children}</Box>
     </Box>
   );
 };
